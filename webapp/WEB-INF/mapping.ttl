@@ -7,6 +7,11 @@
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
 @prefix jdbc: <http://d2rq.org/terms/jdbc/> .
 
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mbp: <http://musicbrainz.org/ns/mmd-1.0#> .
+
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
@@ -38,13 +43,6 @@ map:makers__label a d2rq:PropertyBridge;
 	d2rq:property rdfs:label;
 	d2rq:pattern "makers #@@makers.id@@";
 	.
-map:makers_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:makers;
-	d2rq:property vocab:makers_id;
-	d2rq:propertyDefinitionLabel "makers id";
-	d2rq:column "makers.id";
-	d2rq:datatype xsd:integer;
-	.
 map:makers_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:makers;
 	d2rq:property vocab:makers_name;
@@ -53,49 +51,24 @@ map:makers_name a d2rq:PropertyBridge;
 	.
 map:makers_musicbrainzId a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:makers;
-	d2rq:property vocab:makers_musicbrainzId;
+	d2rq:property mbp:id;
 	d2rq:propertyDefinitionLabel "makers musicbrainzId";
 	d2rq:column "makers.musicbrainzId";
 	d2rq:datatype xsd:integer;
 	.
-map:makers_type__ref a d2rq:PropertyBridge;
+map:maker_type a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:makers;
-	d2rq:property vocab:makers_type;
-	d2rq:refersToClassMap map:makertypes;
-	d2rq:join "makers.type => makertypes.id";
-	.
-
-# Table makertypes
-map:makertypes a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "makertypes/@@makertypes.id@@";
-	d2rq:class vocab:makertypes;
-	d2rq:classDefinitionLabel "makertypes";
-	.
-map:makertypes__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:makertypes;
-	d2rq:property rdfs:label;
-	d2rq:pattern "makertypes #@@makertypes.id@@";
-	.
-map:makertypes_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:makertypes;
-	d2rq:property vocab:makertypes_id;
-	d2rq:propertyDefinitionLabel "makertypes id";
-	d2rq:column "makertypes.id";
-	d2rq:datatype xsd:integer;
-	.
-map:makertypes_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:makertypes;
-	d2rq:property vocab:makertypes_name;
+	d2rq:property dc:type;
 	d2rq:propertyDefinitionLabel "makertypes name";
 	d2rq:column "makertypes.name";
+	d2rq:join "makers.type = makertypes.id";
 	.
 
 # Table tracks
 map:tracks a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "tracks/@@tracks.id@@";
-	d2rq:class vocab:tracks;
+	d2rq:class mo:Track;
 	d2rq:classDefinitionLabel "tracks";
 	.
 map:tracks__label a d2rq:PropertyBridge;
@@ -103,22 +76,15 @@ map:tracks__label a d2rq:PropertyBridge;
 	d2rq:property rdfs:label;
 	d2rq:pattern "tracks #@@tracks.id@@";
 	.
-map:tracks_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:tracks;
-	d2rq:property vocab:tracks_id;
-	d2rq:propertyDefinitionLabel "tracks id";
-	d2rq:column "tracks.id";
-	d2rq:datatype xsd:integer;
-	.
 map:tracks_title a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:tracks;
-	d2rq:property vocab:tracks_title;
+	d2rq:property dc:title;
 	d2rq:propertyDefinitionLabel "tracks title";
 	d2rq:column "tracks.title";
 	.
 map:tracks_musicbrainzId a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:tracks;
-	d2rq:property vocab:tracks_musicbrainzId;
+	d2rq:property mbp:id;
 	d2rq:propertyDefinitionLabel "tracks musicbrainzId";
 	d2rq:column "tracks.musicbrainzId";
 	d2rq:datatype xsd:integer;
@@ -134,7 +100,7 @@ map:tracks_maker__ref a d2rq:PropertyBridge;
 map:users a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "users/@@users.id@@";
-	d2rq:class vocab:users;
+	d2rq:class foaf:Person;
 	d2rq:classDefinitionLabel "users";
 	.
 map:users__label a d2rq:PropertyBridge;
@@ -142,16 +108,9 @@ map:users__label a d2rq:PropertyBridge;
 	d2rq:property rdfs:label;
 	d2rq:pattern "users #@@users.id@@";
 	.
-map:users_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:users;
-	d2rq:property vocab:users_id;
-	d2rq:propertyDefinitionLabel "users id";
-	d2rq:column "users.id";
-	d2rq:datatype xsd:integer;
-	.
 map:users_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:users;
-	d2rq:property vocab:users_name;
+	d2rq:property foaf:name;
 	d2rq:propertyDefinitionLabel "users name";
 	d2rq:column "users.name";
 	.
