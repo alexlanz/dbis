@@ -1,0 +1,25 @@
+.snorql h1, .snorql h2 {
+    color: black;
+}
+
+.button {
+    width: 80px;
+}
+
+
+#title {
+    padding: 30px 0;
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.snorql table {
+    width: 100%;
+}
+
+.snorql th {
+    background-color: #DDD;
+}
