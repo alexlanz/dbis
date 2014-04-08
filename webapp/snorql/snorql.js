@@ -151,9 +151,11 @@ function Snorql() {
     }
 
     this._displayEndpointURL = function() {
-        var newTitle = 'Snorql: Exploring ' + this._endpoint;
-        this._display(document.createTextNode(newTitle), 'title');
-        document.title = newTitle;
+        var textTitle = 'Snorql<br /><span class="subtitle">Query the SPARQL endpoint ' + this._endpoint + '</span>';
+        jQuery('#title').html(textTitle);
+        
+        var pageTitle = 'Snorql';
+        document.title = pageTitle;
     }
 
     this._displayPoweredBy = function() {

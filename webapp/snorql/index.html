@@ -4,26 +4,29 @@
   <head>
     <title>Snorql: A SPARQL Explorer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="/static/css/foundation.min.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
     <script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/foundation.min.js"></script>
     <script type="text/javascript">
-		$.noConflict(); 
+		$.noConflict();
+    var $j = jQuery.noConflict();
     </script>
     <script type="text/javascript" src="prototype.js"></script>
     <script type="text/javascript" src="scriptaculous/scriptaculous.js"></script>
     <script type="text/javascript" src="sparql.js"></script>
     <script type="text/javascript" src="namespaces.js"></script>
     <script type="text/javascript" src="snorql.js"></script>
-
-    <script type="text/javascript" src="/static/js/foundation.min.js"></script>
-    <link rel="stylesheet" href="/static/css/foundation.min.css" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    
   </head>  
 
   <body class="snorql" onload="snorql.start()">
 
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
-        <li class="name"> <h1><a href="/">DBIS - The "Listening To" Database</a></h1> </li>
+        <li class="name"> <h1><a href="/">DBIS <span class="subtitle">- Tweets of listened music</span></a></h1> </li>
         <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
       </ul>
 
@@ -35,96 +38,128 @@
       </section>
     </nav>
 
+    <!-- Query -->
+    <div class="query">
 
-    <div class="row">
-      <div class="large-12 columns">
-        <h1 id="title">Snorql: A SPARQL Explorer</h1>
-      </div>
-    </div>
-
-    <div class="row">
-
-      <!-- Left column -->
-      <div class="large-10 medium-10 columns">
-
-        <h3>SPARQL:</h3>
-
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Prefix</label>
-            <pre id="prefixestext"></pre>
-          </div>
+      <!-- Title -->
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 id="title">Snorql: A SPARQL Explorer</h1>
         </div>
+      </div>
 
-        <form id="queryform" action="#" method="get"><div>
-          <input type="hidden" name="query" value="" id="query" />
-          <input type="hidden" name="output" value="json" id="jsonoutput" disabled="disabled" />
-          <input type="hidden" name="stylesheet" value="" id="stylesheet" disabled="disabled" />
-          <input type="hidden" name="graph" value="" id="graph-uri" disabled="disabled" />
-        </div></form>
-        <div>
-           <div class="row">
-            <div class="large-12 columns">
-              <label>SPARQL
-                <textarea name="query" rows="9" cols="80" id="querytext"></textarea>
-              </label>
-            </div>
-          </div>
+      <!-- SPARQL -->
+      <div class="row">
+
+        <!-- Prefix, SPARQL Query, Result Type, Buttons -->
+        <div class="large-10 medium-10 columns">
 
           <div class="row">
-            <div class="large-6 columns">
-              <label>Results
-                <select id="selectoutput" onchange="snorql.updateOutputMode()">
-                  <option selected="selected" value="browse">Browse</option>
-                  <option value="json">as JSON</option>
-                  <option value="xml">as XML</option>
-                  <option value="xslt">as XML+XSLT</option>
-                </select>
-              </label>
-            </div>
-
-            <div id="xsltcontainer" class="large-6 columns">
-                <label  id="xsltinput">XSLT stylesheet URL:
-                  <input id="xsltstylesheet" type="text" value="snorql/xml-to-html.xsl" size="30" />
-                </label>
+            <div class="large-12 columns">
+              <label>Prefix</label>
+              <pre id="prefixestext"></pre>
             </div>
           </div>
 
-          <input type="button" value="Go!" onclick="snorql.submitQuery()" class="button tiny" />
-          <input type="button" value="Reset" onclick="snorql.resetQuery()" class="button tiny secondary" />
+          <form id="queryform" action="#" method="get"><div>
+            <input type="hidden" name="query" value="" id="query" />
+            <input type="hidden" name="output" value="json" id="jsonoutput" disabled="disabled" />
+            <input type="hidden" name="stylesheet" value="" id="stylesheet" disabled="disabled" />
+            <input type="hidden" name="graph" value="" id="graph-uri" disabled="disabled" />
+          </div></form>
+          <div>
+             <div class="row">
+              <div class="large-12 columns">
+                <label>SPARQL Query
+                  <textarea name="query" rows="9" cols="80" id="querytext"></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <label>Results
+                  <select id="selectoutput" onchange="snorql.updateOutputMode()">
+                    <option selected="selected" value="browse">Browse</option>
+                    <option value="json">as JSON</option>
+                    <option value="xml">as XML</option>
+                    <option value="xslt">as XML+XSLT</option>
+                  </select>
+                </label>
+              </div>
+
+              <div id="xsltcontainer" class="large-6 columns">
+                  <label  id="xsltinput">XSLT stylesheet URL:
+                    <input id="xsltstylesheet" type="text" value="snorql/xml-to-html.xsl" size="30" />
+                  </label>
+              </div>
+            </div>
+
+            <input type="button" value="Go!" onclick="snorql.submitQuery()" class="button tiny" />
+            <input type="button" value="Reset" onclick="snorql.resetQuery()" class="button tiny secondary" />
+          </div>
+
         </div>
 
+        <!-- Browse -->
+        <div class="large-2 medium-2 columns browse">
+          <h3>Browse:</h3>
+          <ul>
+            <li><a class="graph-link" href="?browse=classes">Classes</a></li>
+            <li><a class="graph-link" href="?browse=properties">Properties</a></li>
+            <li id="browse-named-graphs-link"><a href="?browse=graphs">Named Graphs</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Right column -->
-      <div class="large-2 medium-2 columns">
-        <h3>Browse:</h3>
-        <ul>
-          <li><a class="graph-link" href="?browse=classes">Classes</a></li>
-          <li><a class="graph-link" href="?browse=properties">Properties</a></li>
-          <li id="browse-named-graphs-link"><a href="?browse=graphs">Named Graphs</a></li>
-        </ul>
+    </div>
+
+
+    <!-- Result -->
+    <div class="result">
+      <div id="default-graph-section" class="section" style="margin-right: 12em">
+        <h2 style="display: inline">GRAPH:</h2>
+        <p style="display: inline">
+          Default graph.
+          <a href="?browse=graphs">List named graphs</a>
+        </p>
+      </div>
+
+      <div id="named-graph-section" class="section" style="margin-right: 12em">
+        <h2 style="display: inline">GRAPH:</h2>
+        <p style="display: inline">
+          <span id="selected-named-graph">Named graph goes here</span>.
+          <a href="javascript:snorql.switchToDefaultGraph()">Switch back to default graph</a>
+        </p>
+      </div>
+
+      <div class="row section">
+        <div id="result" class="large-12 columns"><span></span></div>
       </div>
     </div>
 
-    <div id="default-graph-section" class="section" style="margin-right: 12em">
-      <h2 style="display: inline">GRAPH:</h2>
-      <p style="display: inline">
-        Default graph.
-        <a href="?browse=graphs">List named graphs</a>
-      </p>
+
+    <!-- Footer -->
+    <div class="row">
+      <div class="large-12 medium-12 small-12 columns">
+        <div id="footer" class="row">
+          <div class="large-6 medium-6 small-6 columns dbis">
+            <strong>DBIS</strong><br />
+            Database and Information Systems<br />
+            Institute of Computer Science<br />
+            University of Innsbruck
+          </div>
+
+          <div class="large-6 medium-6 small-6 columns description">
+            <a href="http://dbis-informatik.uibk.ac.at/">http://dbis-informatik.uibk.ac.at/</a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="named-graph-section" class="section" style="margin-right: 12em">
-      <h2 style="display: inline">GRAPH:</h2>
-      <p style="display: inline">
-        <span id="selected-named-graph">Named graph goes here</span>.
-        <a href="javascript:snorql.switchToDefaultGraph()">Switch back to default graph</a>
-      </p>
-    </div>
 
-    <div class="row section">
-      <div id="result" class="large-12 columns"><span></span></div>
-    </div>
+    <script>
+      $j(document).foundation();
+    </script>
   </body>
 </html>
