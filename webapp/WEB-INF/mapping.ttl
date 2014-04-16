@@ -10,6 +10,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix mbp: <http://musicbrainz.org/ns/mmd-1.0#> .
+@prefix mo: <http://purl.org/ontology/mo/> .
 
 map:database a d2rq:Database;
         d2rq:jdbcDriver "com.mysql.jdbc.Driver";
@@ -32,24 +33,25 @@ map:artists__label a d2rq:PropertyBridge;
         d2rq:property rdfs:label;
         d2rq:pattern "artists #@@artists.id@@";
         .
-map:artists_id a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:artists;
-        d2rq:property vocab:artists_id;
-        d2rq:propertyDefinitionLabel "artists id";
-        d2rq:column "artists.id";
-        d2rq:datatype xsd:integer;
-        .
 map:artists_name a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:artists;
         d2rq:property vocab:artists_name;
         d2rq:propertyDefinitionLabel "artists name";
         d2rq:column "artists.name";
         .
-map:artists_type__ref a d2rq:PropertyBridge;
+map:artists_type a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:artists;
-        d2rq:property vocab:artists_type;
-        d2rq:refersToClassMap map:types;
+        d2rq:property dc:type;
+        d2rq:propertyDefinitionLabel "artists type";
+        d2rq:column "types.name";
         d2rq:join "artists.type => types.id";
+        .
+map:artists_musicbrainz_id a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artists;
+        d2rq:property mbp:id;
+        d2rq:propertyDefinitionLabel "artists musicbrainz id";
+        d2rq:column "musicbrainz_artists.musicbrainzId";
+        d2rq:join "artists.id => musicbrainz_artists.artist";
         .
 
 # Table listening_to
@@ -172,16 +174,9 @@ map:tracks__label a d2rq:PropertyBridge;
         d2rq:property rdfs:label;
         d2rq:pattern "tracks #@@tracks.id@@";
         .
-map:tracks_id a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:tracks;
-        d2rq:property vocab:tracks_id;
-        d2rq:propertyDefinitionLabel "tracks id";
-        d2rq:column "tracks.id";
-        d2rq:datatype xsd:integer;
-        .
 map:tracks_title a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:tracks;
-        d2rq:property vocab:tracks_title;
+        d2rq:property dc:title;
         d2rq:propertyDefinitionLabel "tracks title";
         d2rq:column "tracks.title";
         .
@@ -190,32 +185,6 @@ map:tracks_artist__ref a d2rq:PropertyBridge;
         d2rq:property vocab:tracks_artist;
         d2rq:refersToClassMap map:musicbrainz_artists;
         d2rq:join "tracks.artist => musicbrainz_artists.id";
-        .
-
-# Table types
-map:types a d2rq:ClassMap;
-        d2rq:dataStorage map:database;
-        d2rq:uriPattern "types/@@types.id@@";
-        d2rq:class vocab:types;
-        d2rq:classDefinitionLabel "types";
-        .
-map:types__label a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:types;
-        d2rq:property rdfs:label;
-        d2rq:pattern "types #@@types.id@@";
-        .
-map:types_id a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:types;
-        d2rq:property vocab:types_id;
-        d2rq:propertyDefinitionLabel "types id";
-        d2rq:column "types.id";
-        d2rq:datatype xsd:integer;
-        .
-map:types_name a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:types;
-        d2rq:property vocab:types_name;
-        d2rq:propertyDefinitionLabel "types name";
-        d2rq:column "types.name";
         .
 
 # Table users
@@ -230,16 +199,9 @@ map:users__label a d2rq:PropertyBridge;
         d2rq:property rdfs:label;
         d2rq:pattern "users #@@users.id@@";
         .
-map:users_id a d2rq:PropertyBridge;
-        d2rq:belongsToClassMap map:users;
-        d2rq:property vocab:users_id;
-        d2rq:propertyDefinitionLabel "users id";
-        d2rq:column "users.id";
-        d2rq:datatype xsd:integer;
-        .
 map:users_name a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:users;
-        d2rq:property vocab:users_name;
+        d2rq:property foaf:name;
         d2rq:propertyDefinitionLabel "users name";
         d2rq:column "users.name";
         .
