@@ -10,7 +10,7 @@
     <link rel="alternate" type="text/turtle" href="$rdf_link?output=ttl" title="This page in RDF (Turtle)" />
   </head>
   <body class="browser">
-    <div id="rdficon"><a href="$rdf_link" title="RDF data"><img src="${home_link}snorql/rdf_flyer.24.gif" alt="[RDF data]" /></a></div>
+    <div id="rdficon"><a href="$rdf_link?output=rdfxml" title="RDF data"><img src="${home_link}snorql/rdf_flyer.24.gif" alt="[RDF data]" /></a></div>
     <div id="header">
       <h1 id="title">
         All $classmap
