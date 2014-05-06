@@ -22,9 +22,9 @@
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:jdbcDSN "jdbc:mysql://localhost/eva";
-	d2rq:username "eva";
-	d2rq:password "pwdSecretEva";
+	d2rq:jdbcDSN "jdbc:mysql://localhost/";
+	d2rq:username "";
+	d2rq:password "";
 	jdbc:autoReconnect "true";
 	jdbc:zeroDateTimeBehavior "convertToNull";
 	.
