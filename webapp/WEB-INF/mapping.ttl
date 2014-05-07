@@ -14,13 +14,13 @@
 @prefix mo: <http://purl.org/ontology/mo/> .
 
 <> a d2r:Server;
-    d2r:baseURI <http://dbis-nowplaying.uibk.ac.at/>;
-    d2r:port 80;
+	d2r:baseURI <http://dbis-nowplaying.uibk.ac.at/>;
+	d2r:port 80;
 	d2r:limitPerClassMap 1000;
 	d2r:limitPerPropertyBridge false;
-	d2r:sparqlTimeout 300;
+	d2r:sparqlTimeout 60;
   	d2r:pageTimeout 5;
-  	rdfs:label "#nowplaying";
+	rdfs:label "#nowplaying";
     .
 
 map:database a d2rq:Database;

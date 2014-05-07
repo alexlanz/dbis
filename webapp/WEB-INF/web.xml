@@ -83,6 +83,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>de.fuberlin.wiwiss.d2rq.server.DownloadServlet</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>NamespaceServlet</servlet-name>
     <servlet-class>de.fuberlin.wiwiss.d2rq.server.NamespaceServlet</servlet-class>
   </servlet>
@@ -157,6 +162,11 @@
   <servlet-mapping>
     <servlet-name>StatsServlet</servlet-name>
     <url-pattern>/stats</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+     <servlet-name>DownloadServlet</servlet-name>
+     <url-pattern>/download</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
