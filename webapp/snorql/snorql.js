@@ -151,8 +151,8 @@ function Snorql() {
     }
 
     this._displayEndpointURL = function() {
-        var textTitle = 'Snorql<br /><span class="subtitle">Query the SPARQL endpoint ' + this._endpoint + '</span>';
-        jQuery('#title').html(textTitle);
+        var textTitle = 'Query the SPARQL endpoint ' + this._endpoint;
+        jQuery('#subtitle').html(textTitle);
         
         var pageTitle = 'Snorql';
         document.title = pageTitle;
@@ -362,7 +362,7 @@ function SPARQLResultFormatter(json, namespaces) {
 
     this.toDOM = function() {
         var table = document.createElement('table');
-        table.className = 'queryresults';
+        table.className = 'queryresults table';
         table.appendChild(this._createTableHeader());
         for (var i = 0; i < this._results.length; i++) {
             table.appendChild(this._createTableRow(this._results[i], i));

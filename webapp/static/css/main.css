@@ -1,0 +1,121 @@
+/* General */
+a {
+    color: #3C83AF;
+}
+
+a:hover {
+    color: #9E83BA;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+/* Top */
+#title {
+    background-color: #B9DAE3;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#title h1 {
+    margin: 10px 0;
+}
+
+/* Footer */
+#footer {
+    margin-top: 20px;
+}
+
+#footer > .row {
+    font-size: 12px;
+    color: #4D4D4D;
+    border-top: 1px solid #4D4D4D;
+}
+
+#footer .dbis {
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+#footer .description {
+    text-align: right;
+    margin: 10px 0;
+}
+
+/* Description */
+#description .text {
+    font-size: 15px;
+    margin-bottom: 28px;
+    font-weight: 200;
+    line-height: 1.4;
+}
+
+@media (min-width:768px){
+    #description .text {
+        font-size: 18px
+    }
+
+}
+
+#description .text:last-child {
+    margin-bottom: 20px;
+}
+
+/* Access */
+#access .list {
+    margin: 10px 0px;
+    padding-left: 0px;
+}
+
+#access .list li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+#access .link {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* Snorql */
+#sparql {
+    margin-top: 20px;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#result h2 {
+    font-size: 24px;
+}
+
+.snorql table {
+    width: 100%;
+    background: none repeat scroll 0% 0% #FFF;
+    margin-bottom: 1.25rem;
+    border: 1px solid #DDD;
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+
+.snorql th, .snorql td {
+    display: table-cell;
+    color: #222;
+    font-size: 1.4rem;
+    line-height: 2.125rem;
+    padding: 0.7rem 1rem;
+}
+
+.snorql th {
+    background-color: #DDD;
+    text-align: center;
+}
+
+.snorql tr:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% #F9F9F9;
+}
