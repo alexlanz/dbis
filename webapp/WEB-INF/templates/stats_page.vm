@@ -31,7 +31,20 @@
             <li><a href="/">Home</a></li>
             <li><a href="/static/docs">Documentation</a></li>
             <li><a href="/static/stats">Statistics</a></li>
-            <li><a href="/">Data Set</a></li>
+            
+            #if (!$classmap_links.isEmpty())
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Set <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                #foreach ($aClassMap in $classmap_links.keySet())
+                  <li><a href="$classmap_links.get($aClassMap)">$aClassMap</a></li>
+                #end
+
+                </ul>
+              </li>
+            #end
+
             <li><a href="/snorql">Snorql</a></li>
           </ul>
         </div>
@@ -53,13 +66,13 @@
         <div class="col-sm-offset-3 col-sm-6">
 
           <ul>
-            <li>Number of artists: 0</li>
-            <li>Number of tracks: 0</li>
-            <li>Number of users: 0</li>
-            <li>Number of listining events: 0</li>
+            <li>Number of artists: $artists</li>
+            <li>Number of tracks: $tracks</li>
+            <li>Number of users: $users</li>
+            <li>Number of listining events: $listening_events</li>
           </ul>
 
-          <br />The latest update of the statistics was made on 2014-05-07 at 14:07.
+          <br />The latest update of the statistics was made on $updated_at.
 
         </div>
 

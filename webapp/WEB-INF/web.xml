@@ -156,7 +156,7 @@
 
   <servlet-mapping>
     <servlet-name>StatsServlet</servlet-name>
-    <url-pattern>/stats/index.html</url-pattern>
+    <url-pattern>/stats</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
