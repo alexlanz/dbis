@@ -2,54 +2,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Documentation</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" href="/static/css/foundation.min.css" />
-    <link rel="stylesheet" href="/static/css/style.css" />
-
-    <script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
-    <script type="text/javascript" src="/static/js/foundation.min.js"></script>
-    <script type="text/javascript">
-      var $j = jQuery.noConflict();
-    </script>
-    
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
   </head>  
 
-  <body class="documentation">
+  <body>
 
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name"> <h1><a href="/">DBIS <span class="subtitle">- Tweets of listened music</span></a></h1> </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Left Nav Section -->
-        <ul class="right">
-          <li><a href="/snorql">Snorql</a></li>
-          <li><a href="/static/docs">Documentation</a></li>
-        </ul>
-      </section>
-    </nav>
-
-    <!-- Top -->
-    <div class="top">
-
-      <!-- Title -->
-      <div class="row">
-        <div class="large-12 columns">
-          <h1 id="title">Documentation<br /><span class="subtitle">The documentation of the listened music tweets database</h1>
+    <!-- Navigation -->
+      <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">#nowplaying</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/static/docs">Documentation</a></li>
+            <li><a href="/static/stats">Statistics</a></li>
+            <li><a href="/">Data Set</a></li>
+            <li><a href="/snorql">Snorql</a></li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <!-- SPARQL -->
+    <!-- Title -->
+    <div id="title">
+      <div class="container">
+        <h1>Documentation</h1>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div id="content" class="container">
+
       <div class="row">
 
-        <!-- Content -->
-        <div class="large-4 medium-4 columns">
+        <div class="col-sm-4">
 
-          <h3>Dataset</h3>
+          <h3>Data Set</h3>
           <ul>
             <li><a href="#">Part 1 of the documentation</a></li>
             <li><a href="#">Part 2 of the documentation</a></li>
@@ -60,7 +63,7 @@
 
         </div>
 
-        <div class="large-4 medium-4 columns">
+        <div class="col-sm-4">
 
           <h3>Sparql</h3>
           <ul>
@@ -73,7 +76,7 @@
 
         </div>
 
-        <div class="large-4 medium-4 columns">
+        <div class="col-sm-4">
 
           <h3>API</h3>
           <ul>
@@ -84,13 +87,9 @@
         </div>
       </div>
 
-    </div>
 
-
-    <!-- Bottom -->
-    <div class="bottom row">
-      <div class="large-12 medium-12 small-12 columns">
-        <h3>Header 1</h3>
+      <div class="doku-text">
+        <h3>Data Set</h3>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
         <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
@@ -106,26 +105,22 @@
 
 
     <!-- Footer -->
-    <div class="row">
-      <div class="large-12 medium-12 small-12 columns">
-        <div id="footer" class="row">
-          <div class="large-6 medium-6 small-6 columns dbis">
-            <strong>DBIS</strong><br />
-            Database and Information Systems<br />
-            Institute of Computer Science<br />
-            University of Innsbruck
-          </div>
+    <div id="footer" class="container">
+      <div class="row">
 
-          <div class="large-6 medium-6 small-6 columns description">
-            <a href="http://dbis-informatik.uibk.ac.at/">http://dbis-informatik.uibk.ac.at/</a>
-          </div>
+        <div class="col-sm-6 dbis">
+          <strong>DBIS</strong><br />
+          Database and Information Systems<br />
+          Institute of Computer Science<br />
+          University of Innsbruck<br />
+          <a href="http://dbis-informatik.uibk.ac.at/">http://dbis-informatik.uibk.ac.at/</a>
         </div>
+
       </div>
     </div>
 
-
-    <script>
-      $j(document).foundation();
-    </script>
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>

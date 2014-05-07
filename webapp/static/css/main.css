@@ -85,7 +85,6 @@ a:hover {
     font-weight: bold;
 }
 
-
 /* Resources */
 .breadcrumb > li + li:before {
     content: "| ";
@@ -149,6 +148,16 @@ a:hover {
     background-color: #DDD;
 }
 
+/* Statistics */
+.statistics {
+    text-align: center;
+    line-height: 28px;
+}
+
+.statistics ul {
+    list-style-type: none;
+    padding: 0px;
+}
 
 /* Snorql */
 #sparql {

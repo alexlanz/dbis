@@ -74,6 +74,15 @@
   </servlet>
 
   <servlet>
+    <servlet-name>StatsServlet</servlet-name>
+    <servlet-class>de.fuberlin.wiwiss.d2rq.server.StatsServlet</servlet-class>
+    <init-param>
+      <param-name>org.apache.velocity.properties</param-name>
+      <param-value>/WEB-INF/velocity.properties</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
     <servlet-name>NamespaceServlet</servlet-name>
     <servlet-class>de.fuberlin.wiwiss.d2rq.server.NamespaceServlet</servlet-class>
   </servlet>
@@ -143,6 +152,11 @@
   <servlet-mapping>
     <servlet-name>RootServlet</servlet-name>
     <url-pattern>/index.html</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StatsServlet</servlet-name>
+    <url-pattern>/stats/index.html</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
