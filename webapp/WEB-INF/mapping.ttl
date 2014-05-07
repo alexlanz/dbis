@@ -14,11 +14,14 @@
 @prefix mo: <http://purl.org/ontology/mo/> .
 
 <> a d2r:Server;
-        d2r:baseURI <http://dbis-nowplaying.uibk.ac.at/>;
-        d2r:port 80;
+    d2r:baseURI <http://dbis-nowplaying.uibk.ac.at/>;
+    d2r:port 80;
 	d2r:limitPerClassMap 1000;
 	d2r:limitPerPropertyBridge false;
-        .
+	d2r:sparqlTimeout 300;
+  	d2r:pageTimeout 5;
+  	rdfs:label "#nowplaying";
+    .
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
@@ -47,56 +50,49 @@ map:artists_name a d2rq:PropertyBridge;
 	d2rq:propertyDefinitionLabel "artists name";
 	d2rq:column "artists.name";
 	.
-map:artists_type__ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artists;
-	d2rq:property dc:type;
-	d2rq:propertyDefinitionLabel "artists type";
-	d2rq:column "types.name";
-	d2rq:join "artists.type => types.id";
-	.
 map:artists_musicbrainz_artists__ref a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artists;
 	d2rq:property mo:musicbrainz;
 	d2rq:propertyDefinitionLabel "artists musicbrainz";
-	d2rq:column "musicbrainz_artists.musicbrainzId";
+	d2rq:pattern "http://musicbrainz.org/artist/@@musicbrainz_artists.musicbrainzId@@";
 	d2rq:join "artists.id => musicbrainz_artists.artist";
 	.
 
-# Table listening_to
-map:listening_to a d2rq:ClassMap;
+# Table listening_events
+map:listening_events a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "listening_to/@@listening_to.track@@/@@listening_to.user@@";
+	d2rq:uriPattern "listening_events/@@listening_to.track@@/@@listening_to.user@@";
 	d2rq:class sioc:Post;
-	d2rq:classDefinitionLabel "listening_to";
+	d2rq:classDefinitionLabel "listening_events";
 	.
-map:listening_to__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_to;
+map:listening_events__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:listening_events;
 	d2rq:property rdfs:label;
 	d2rq:pattern "@@artists.name@@ - @@tracks.title@@";
 	d2rq:join "listening_to.track => tracks.id";
 	d2rq:join "tracks.artist => artists.id";
 	.
-map:listening_to_created_at a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_to;
+map:listening_events_created_at a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:listening_events;
 	d2rq:property dcterms:created;
 	d2rq:propertyDefinitionLabel "listening_to created_at";
 	d2rq:column "listening_to.created_at";
 	d2rq:datatype xsd:dateTime;
 	.
-map:listening_to_service a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_to;
+map:listening_events_service a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:listening_events;
 	d2rq:property dc:publisher;
 	d2rq:propertyDefinitionLabel "listening_to service";
 	d2rq:column "listening_to.service";
 	.
-map:listening_to_track__ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_to;
+map:listening_events_track__ref a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:listening_events;
 	d2rq:property mo:track;
 	d2rq:refersToClassMap map:tracks;
 	d2rq:join "listening_to.track => tracks.id";
 	.
-map:listening_to_user__ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_to;
+map:listening_events_user__ref a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:listening_events;
 	d2rq:property sioc:creator_of;
 	d2rq:refersToClassMap map:users;
 	d2rq:join "listening_to.user => users.id";
@@ -130,7 +126,7 @@ map:tracks_musicbrainz_tracks__ref a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:tracks;
 	d2rq:property mo:musicbrainz;
 	d2rq:propertyDefinitionLabel "tracks musicbrainz";
-        d2rq:column "musicbrainz_tracks.musicbrainzId";
+    d2rq:pattern "http://musicbrainz.org/track/@@musicbrainz_tracks.musicbrainzId@@";
 	d2rq:join "tracks.id => musicbrainz_tracks.track";
 	.
 

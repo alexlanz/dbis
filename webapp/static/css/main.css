@@ -12,7 +12,7 @@ a:hover {
     border-radius: 0px;
 }
 
-/* Top */
+/* Title */
 #title {
     background-color: #B9DAE3;
     text-align: center;
@@ -21,6 +21,11 @@ a:hover {
 
 #title h1 {
     margin: 10px 0;
+}
+
+/* Content */
+#content {
+    margin-top: 20px;
 }
 
 /* Footer */
@@ -78,6 +83,70 @@ a:hover {
 #access .link {
     text-align: center;
     font-weight: bold;
+}
+
+
+/* Resources */
+.breadcrumb > li + li:before {
+    content: "| ";
+}
+
+.directory {
+    list-style-type: none;
+}
+
+.directory li {
+    margin-bottom: 10px;
+}
+
+.limit {
+    color: #333;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+.resource table {
+    width: 100%;
+    background: none repeat scroll 0% 0% #FFF;
+    margin-bottom: 1.25rem;
+    border: 1px solid #DDD;
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+
+.resource th, .resource td {
+    display: table-cell;
+    color: #222;
+    font-size: 1.4rem;
+    line-height: 2.125rem;
+    padding: 0.7rem 1rem;
+}
+
+.resource th {
+    background-color: #DDD;
+    text-align: center;
+}
+
+.resource tr:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% #F9F9F9;
+}
+
+.metadata-table {
+    margin-top: 10px;
+}
+
+.dataset table {
+    width: 100%;
+    background: none repeat scroll 0% 0% #FFF;
+    border: 2px solid #DDD;
+    border-spacing: 2px;
+    border-collapse: separate;
+    margin-top: 0px;
+    margin-bottom: 1.25rem;
+}
+
+.dataset .metadata-label {
+    background-color: #DDD;
 }
 
 
