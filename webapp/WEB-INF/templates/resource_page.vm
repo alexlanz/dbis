@@ -39,8 +39,21 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/static/docs">Documentation</a></li>
-            <li><a href="/static/stats">Statistics</a></li>
-            <li><a href="/">Data Set</a></li>
+            <li><a href="/stats">Statistics</a></li>
+            
+            #if (!$classmap_links2.isEmpty())
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Set <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                #foreach ($aClassMap in $classmap_links2.keySet())
+                  <li><a href="$classmap_links2.get($aClassMap)">$aClassMap</a></li>
+                #end
+
+                </ul>
+              </li>
+            #end
+
             <li><a href="/snorql">Snorql</a></li>
           </ul>
         </div>

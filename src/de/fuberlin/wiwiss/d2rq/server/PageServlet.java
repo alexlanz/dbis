@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import javax.servlet.ServletException;
@@ -133,6 +134,7 @@ public class PageServlet extends HttpServlet {
 		context.put("label", getBestLabel(resource));
 		context.put("properties", collectProperties(description, resource));
 		context.put("classmap_links", classmapLinks(resource));
+		context.put("classmap_links2", classmapLinks2(server));
 		context.put("limit_per_property_bridge", limit > 0 ? limit : null);
 		velocity.mergeTemplateXHTML("resource_page.vm");
 	}
@@ -158,6 +160,16 @@ public class PageServlet extends HttpServlet {
 			result.put(name, server.baseURI() + "directory/" + name);
 		}
 		return result;
+	}
+
+	private Map<String, String> classmapLinks2(D2RServer server)
+	{
+		Map<String,String> classMapLinks = new TreeMap<String,String>();
+		ClassMapLister lister = D2RServer.retrieveSystemLoader(getServletContext()).getClassMapLister();
+		for (String name: lister.classMapNames()) {
+			classMapLinks.put(name, server.baseURI() + "directory/" + name);
+		}
+		return classMapLinks;
 	}
 
 	private ClassMapLister getClassMapLister() {
