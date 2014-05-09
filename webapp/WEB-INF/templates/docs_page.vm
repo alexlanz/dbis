@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <!-- Title -->
+        <!-- Title -->
     <div id="title">
       <div class="container">
         <h1>Documentation</h1>
@@ -61,59 +61,197 @@
     <!-- Content -->
     <div id="content" class="container">
 
-      <div class="row">
+      <div class="doku-text docu-content">
+        <h4>Content:</h4>
+        <ul>
+          <li><a href="#about">About the project</a></li>
+          <li><a href="#access">Accessing the data</a></li>
+          <li><a href="#example-document">Docuemnt example</a></li>
+          <li><a href="#example-sparql">SPARQL query example</a></li>
+        </ul>
+      </div>
 
-        <div class="col-sm-4">
+      <div id="about" class="doku-text">
+        <h3>About the project</h3>
+        <p>Social media platforms like Facebook, Twitter or LinkedIn gained huge popularity and have proven to be a valuable and popular source of user-generated content as harvesting social media platforms allows for gathering huge amounts of data from a diverse set of users. The extraction of information from social media platforms has become popular not only among scientists as these new data sources allow for new applications as e.g., detecting real-world incidents, earthquakes or recommender systems aiming at recommending news, other users or hashtags based on information extracted from Twitter. However, research focused on music information retrieval (MIR) and music recommender systems hardly makes use of user-generated data gathered from online social networks. For instance, Schedl found that work leveraging social media data for Music Information Retrieval is hardly existent except for approaches exploiting the music service Last.fm. Similarly, Bertin-Mathieux et al. call for a large, publicly available data set which can be used to evaluate scalable algorithms in the field of music information retrieval and music recommender systems.</p>
 
-          <h3>Data Set</h3>
-          <ul>
-            <li><a href="#">Part 1 of the documentation</a></li>
-            <li><a href="#">Part 2 of the documentation</a></li>
-            <li><a href="#">Part 3 of the documentation</a></li>
-            <li><a href="#">Part 4 of the documentation</a></li>
-            <li><a href="#">Part 5 of the documentation</a></li>
-          </ul>
+        <p>To foster research in the fields of music information retrieval and music recommendations based on user-generated data retrieved from online social networks, we present the #nowplaying data set, which contains information about the music listening behavior of users gathered from Twitter. In particular, we leverage so-called #nowplaying-tweets, i.e., tweets stating that a certain user A listened to a specific track by a specific artist. An example of such a tweet is depicted in the following: &quot;Like a Rolling Stone - Bob Dylan #nowplaying #listenlive&quot;. In this tweet, a user states that he/she listened to the song &quot;Like a Rolling Stone&quot; performed by Bob Dylan. For the #nowplaying data set, we extract information about the artist and the track title and enrich it with further metadata about the tweet, the artist and track mentioned in the tweet. After performing this extraction, we are able to provide a data set which currently comprises 40 million listening  events described by 400 million triples.</p>
+      </div>
+
+      <div id="access" class="doku-text">
+        <h3>How to access the data</h3>
+        <p>The dataset can be accessed in 5 different ways:</p>
+
+        <div class="row">
+
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">1. HTML View</h3>
+              </div>
+              <div class="panel-body">
+                You can use the following navigation links to explore the database with your web browser.
+
+                #if (!$classmap_links.isEmpty())
+                  <ul class="list">
+                  #foreach ($aClassMap in $classmap_links.keySet())
+                        <li><a href="$classmap_links.get($aClassMap)">$aClassMap</a></li>
+                  #end
+                  </ul>
+                #end
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">2. RDF View</h3>
+              </div>
+              <div class="panel-body">
+                <p>You can explore this database with Semantic Web browsers like <a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/">Disco</a> or <a href="http://marbles.sourceforge.net">Marbles</a>. To start browsing, open this entry point URL in your Semantic Web browser:</p>
+
+                <p class="link link-source">${home_link}all</p>
+              </div>
+            </div>
+          </div>
 
         </div>
+        <div class="row">
 
-        <div class="col-sm-4">
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">3. SPARQL Endpoint</h3>
+              </div>
+              <div class="panel-body">
+                <p>SPARQL clients can query the database at this SPARQL endpoint:</p>
 
-          <h3>Sparql</h3>
-          <ul>
-            <li><a href="#">Part 1 of the documentation</a></li>
-            <li><a href="#">Snorql</a></li>
-            <li><a href="#">JSON</a></li>
-            <li><a href="#">XML</a></li>
-            <li><a href="#">Part 5 of the documentation</a></li>
-          </ul>
+                <p class="link link-source">${home_link}sparql</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">4. Snorql</h3>
+              </div>
+              <div class="panel-body">
+                <p>The SPARQL endpoint can also be explored using the build in AJAX-based SPARQL Explorer:</p>
+
+                <p class="link"><a href="/snorql/">Snorql</a></p>
+              </div>
+            </div>
+          </div>
 
         </div>
+        <div class="row">
 
-        <div class="col-sm-4">
+          <div class="col-sm-offset-3 col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">5. Data Set Dump</h3>
+              </div>
+              <div class="panel-body">
+                <p>A dump of the data set can be downloaded in two different ways:</p>
 
-          <h3>API</h3>
-          <ul>
-            <li><a href="#">Cool URIs</a></li>
-            <li><a href="#">Part 2 of the documentation</a></li>
-          </ul>
+                <p class="link"><a href="/download">RDF/XML</a> - <a href="/download?format=turtle">Turtle</a></p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
 
 
-      <div class="doku-text">
-        <h3>Data Set</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      <div id="example-document" class="doku-text">
+        <h3>An example of a document</h3>
 
-        <p>The dataset can be downloaded here in <a href="/download">RDF/XML</a> or in <a href="/download?format=turtle">Turtle</a> format. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <pre>
 
-        <h3>Header 2</h3>
-        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p> 
+          &lt;?xml version="1.0"?&gt;
+          &lt;rdf:RDF
+              xmlns:vocab="http://dbis-nowplaying.uibk.ac.at/resource/vocab/"
+              xmlns:void="http://rdfs.org/ns/void#"
+              xmlns:sioc="http://rdfs.org/sioc/ns#"
+              xmlns:xhtml="http://www.w3.org/1999/xhtml/vocab/#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:db="http://dbis-nowplaying.uibk.ac.at/resource/"
+              xmlns:prvTypes="http://purl.org/net/provenance/types#"
+              xmlns:d2r="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#"
+              xmlns:foaf="http://xmlns.com/foaf/0.1/"
+              xmlns:sp="http://spinrdf.org/sp#"
+              xmlns:doap="http://usefulinc.com/ns/doap#"
+              xmlns:owl="http://www.w3.org/2002/07/owl#"
+              xmlns:dcterms="http://purl.org/dc/terms/"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+              xmlns:map="http://dbis-nowplaying.uibk.ac.at/resource/#"
+              xmlns:prv="http://purl.org/net/provenance/ns#"
+              xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+              xmlns:d2rq="http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#"
+              xmlns:mo="http://purl.org/ontology/mo/"&gt;
+            &lt;rdf:Description rdf:about="http://dbis-nowplaying.uibk.ac.at/resource/tracks/ta03"&gt;
+              &lt;foaf:maker&gt;
+                &lt;mo:MusicArtist rdf:about="http://dbis-nowplaying.uibk.ac.at/resource/artists/ar02"&gt;
+                  &lt;foaf:page rdf:resource="http://dbis-nowplaying.uibk.ac.at/page/artists/ar02"/&gt;
+                  &lt;rdfs:isDefinedBy&gt;
+                    &lt;foaf:Document rdf:about="http://dbis-nowplaying.uibk.ac.at/data/artists/ar02"&gt;
+                      &lt;prv:containedBy rdf:resource="http://dbis-nowplaying.uibk.ac.at/dataset"/&gt;
+                      &lt;void:inDataset rdf:resource="http://dbis-nowplaying.uibk.ac.at/dataset"/&gt;
+                      &lt;dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+                      &gt;2014-05-09T12:35:12.6Z&lt;/dcterms:date&gt;
+                      &lt;rdf:type rdf:resource="http://purl.org/net/provenance/ns#DataItem"/&gt;
+                      &lt;rdfs:label&gt;RDF Description of Alex Clare&lt;/rdfs:label&gt;
+                      &lt;foaf:primaryTopic rdf:resource="http://dbis-nowplaying.uibk.ac.at/resource/artists/ar02"/&gt;
+                    &lt;/foaf:Document&gt;
+                  &lt;/rdfs:isDefinedBy&gt;
+                  &lt;mo:musicbrainz rdf:resource="http://musicbrainz.org/artist/482-rgb"/&gt;
+                  &lt;rdfs:label&gt;Alex Clare&lt;/rdfs:label&gt;
+                  &lt;foaf:name&gt;Alex Clare&lt;/foaf:name&gt;
+                &lt;/mo:MusicArtist&gt;
+              &lt;/foaf:maker&gt;
+            &lt;/rdf:Description&gt;
+          &lt;/rdf:RDF&gt;
 
-        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-
-        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+        </pre>
       </div>
+
+
+      <div id="example-sparql" class="doku-text">
+        <h3>An example of a SPARQL query</h3>
+
+        <pre>
+
+          PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+          PREFIX db: &lt;http://dbis-nowplaying.uibk.ac.at/resource/&gt;
+          PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
+          PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+          PREFIX dcterms: &lt;http://purl.org/dc/terms/&gt;
+          PREFIX sioc: &lt;http://rdfs.org/sioc/ns#&gt;
+          PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+          PREFIX d2r: &lt;http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#&gt;
+          PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+          PREFIX map: &lt;http://dbis-nowplaying.uibk.ac.at/resource/#&gt;
+          PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+          PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+          PREFIX vocab: &lt;http://dbis-nowplaying.uibk.ac.at/resource/vocab/&gt;
+
+          SELECT DISTINCT * WHERE {
+            ?listeningEvent dcterms:created ?createdAt .
+            ?listeningEvent sioc:has_creator ?user .
+            ?listeningEvent dc:publisher ?source .
+            ?listeningEvent mo:track ?track .
+            ?track dc:title "Too Close" .
+            ?track mo:musicbrainz ?mbTrackID .
+            ?track foaf:maker ?artist .
+            ?artist foaf:name "Alex Clare" .
+            ?artist mo:musicbrainz ?mbArtistID .
+          }
+          LIMIT 10
+        </pre>
+      </div>
+
     </div>
 
 
@@ -155,3 +293,4 @@
     <!-- End Piwik Code -->
   </body>
 </html>
+

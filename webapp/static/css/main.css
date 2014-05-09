@@ -92,6 +92,11 @@ a:hover {
     font-weight: bold;
 }
 
+/* Documentation */
+.docu-content ul {
+    margin-bottom: 35px;
+}
+
 /* Resources */
 .breadcrumb > li + li:before {
     content: "| ";
