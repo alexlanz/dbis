@@ -82,7 +82,7 @@
             <li>$listening_events listening events</li>
           </ul>
 
-          In the <a href="/static/stats">statistics</a> can be found more informations.
+          In the <a href="/stats">statistics</a> can be found more informations.
         </p> 
 
         <h3>Accessing the data:</h3>
