@@ -31,6 +31,7 @@ public class StatsServlet extends HttpServlet {
 		Context context = velocity.getContext();
 		context.put("classmap_links", classMapLinks);
 
+		// Loading stats
 		try {
     			BufferedReader br = new BufferedReader(new FileReader("stats.txt"));
     		

@@ -57,6 +57,10 @@ a:hover {
     line-height: 1.4;
 }
 
+#description .text-docu {
+    margin-bottom: 12px;
+}
+
 @media (min-width:768px){
     #description .text {
         font-size: 18px
@@ -82,6 +86,9 @@ a:hover {
 
 #access .link {
     text-align: center;
+}
+
+#access .link-source {
     font-weight: bold;
 }
 
@@ -165,11 +172,24 @@ a:hover {
 }
 
 #result {
-    margin-top: 20px;
 }
 
 #result h2 {
     font-size: 24px;
+}
+
+.snorql-fix {
+    margin-bottom: 20px;
+}
+
+.snorql-float {
+    float: left;
+}
+
+.limit-snorql {
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-bottom: 20px;
 }
 
 .snorql table {

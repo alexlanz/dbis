@@ -50,7 +50,7 @@
     <div id="content" class="container">
 
       <!-- Query -->
-      <div id="sparql">
+      <div id="sparql row">
         <div class="col-sm-10">
           <label>Prefix</label>
           <pre id="prefixestext"></pre>
@@ -72,12 +72,11 @@
             <input type="hidden" name="stylesheet" value="" id="stylesheet" disabled="disabled" />
             <input type="hidden" name="graph" value="" id="graph-uri" disabled="disabled" />
           </form>
-
-        <div class="form-group">
-          <label>SPARQL Query</label>
-          <textarea name="query" id="querytext" class="form-control" rows="10"></textarea>
-        </div>
-          
+        
+          <div class="form-group">
+            <label>SPARQL Query</label>
+            <textarea name="query" id="querytext" class="form-control" rows="10"></textarea>
+          </div>
         </div>
 
         <div class="col-sm-5">
@@ -100,10 +99,17 @@
           </div>
         </div>
 
-        <div class="col-sm-10">
-          <input type="button" value="Go!" onclick="snorql.submitQuery()" class="btn btn-default btn-primary" />
-          <input type="button" value="Reset" onclick="snorql.resetQuery()" class="btn btn-default" />
+        <div class="col-sm-10 snorql-fix">
+            <div class="snorql-float">
+              <input type="button" value="Go!" onclick="snorql.submitQuery()" class="btn btn-default btn-primary" />
+              <input type="button" value="Reset" onclick="snorql.resetQuery()" class="btn btn-default" />
+            </div>
+
+            <div class="snorql-float">
+              <div class="limit limit-snorql">The server is configured to run no queries that take longer than 60 seconds.</div>
+            </div>
         </div>
+
       </div>
 
       <!-- Result -->

@@ -71,17 +71,29 @@
         <p class="text">#nowplaying is a data set which leverages social media for the creation of a diverse and constantly updated data set describing the music listening behavior of users. For the creation of the data set we rely on Twitter which is frequently facilitated to post which music the respective user is currently listening to. From such tweets, we extract track and artist information and further metadata.</p>
 
         <h3>Documentation and Statistics:</h3>
-        <p class="text">More detailed informations about the structure of the data set and how to access it can be found in the <a href="/static/docs">documentation</a>. The <a href="/static/stats">statistics</a> contain informations about the actual amount of items.</p> 
+        <p class="text text-docu">More detailed informations about the structure of the data set and how to access it can be found in the <a href="/static/docs">documentation</a>.</p>
+
+        <p class="text">The data set contains:
+
+          <ul>
+            <li>$artists artists</li>
+            <li>$tracks tracks</li>
+            <li>$users users</li>
+            <li>$listening_events listening events</li>
+          </ul>
+
+          In the <a href="/static/stats">statistics</a> can be found more informations.
+        </p> 
 
         <h3>Accessing the data:</h3>
-        <p class="text">The database can be accessed in 3 different ways:</p>
+        <p class="text">The database can be accessed in 4 different ways:</p>
       </div>
 
 
       <!-- Access -->
       <div id="access" class="row">
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">1. HTML View</h3>
@@ -100,7 +112,7 @@
           </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">2. RDF View</h3>
@@ -108,12 +120,12 @@
             <div class="panel-body">
               <p>You can explore this database with Semantic Web browsers like <a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/">Disco</a> or <a href="http://marbles.sourceforge.net">Marbles</a>. To start browsing, open this entry point URL in your Semantic Web browser:</p>
 
-              <p class="link">${home_link}all</p>
+              <p class="link link-source">${home_link}all</p>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">3. SPARQL Endpoint</h3>
@@ -121,7 +133,20 @@
             <div class="panel-body">
               <p>The SPARQL endpoint can be explored using the build in AJAX-based SPARQL Explorer <a href="snorql/">Snorql</a> or SPARQL clients can query the database at this SPARQL endpoint:</p>
 
-              <p class="link">${home_link}sparql</p>
+              <p class="link link-source">${home_link}sparql</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">3. Data Set Dump</h3>
+            </div>
+            <div class="panel-body">
+              <p>A dump of the data set can be downloaded in two different ways:</p>
+
+              <p class="link"><a href="/download">RDF/XML</a> - <a href="/download?format=turtle">Turtle</a></p>
             </div>
           </div>
         </div>
