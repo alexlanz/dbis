@@ -30,9 +30,23 @@
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="/static/docs">Documentation</a></li>
+            <li><a href="/docs">Documentation</a></li>
             <li><a href="/stats">Statistics</a></li>
-            <li><a href="/snorql">Snorql</a></li>
+
+            #if (!$classmap_links.isEmpty())
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Set <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                #foreach ($aClassMap in $classmap_links.keySet())
+                  <li><a href="$classmap_links.get($aClassMap)">$aClassMap</a></li>
+                #end
+
+                </ul>
+              </li>
+            #end
+
+            <li><a href="/snorql/">Snorql</a></li>
           </ul>
         </div>
       </div>
@@ -157,10 +171,10 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="prototype.js"></script>
-    <script type="text/javascript" src="scriptaculous/scriptaculous.js"></script>
-    <script type="text/javascript" src="sparql.js"></script>
-    <script type="text/javascript" src="namespaces.js"></script>
-    <script type="text/javascript" src="snorql.js"></script>
+    <script type="text/javascript" src="/snorql/prototype.js"></script>
+    <script type="text/javascript" src="/snorql/scriptaculous/scriptaculous.js"></script>
+    <script type="text/javascript" src="/snorql/sparql.js"></script>
+    <script type="text/javascript" src="/snorql/namespaces.js"></script>
+    <script type="text/javascript" src="/snorql/snorql.js"></script>
   </body>
 </html>

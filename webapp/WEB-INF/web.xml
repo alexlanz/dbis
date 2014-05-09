@@ -83,6 +83,24 @@
   </servlet>
 
   <servlet>
+    <servlet-name>DocsServlet</servlet-name>
+    <servlet-class>de.fuberlin.wiwiss.d2rq.server.DocsServlet</servlet-class>
+    <init-param>
+      <param-name>org.apache.velocity.properties</param-name>
+      <param-value>/WEB-INF/velocity.properties</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SnorqlServlet</servlet-name>
+    <servlet-class>de.fuberlin.wiwiss.d2rq.server.SnorqlServlet</servlet-class>
+    <init-param>
+      <param-name>org.apache.velocity.properties</param-name>
+      <param-value>/WEB-INF/velocity.properties</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
     <servlet-name>DownloadServlet</servlet-name>
     <servlet-class>de.fuberlin.wiwiss.d2rq.server.DownloadServlet</servlet-class>
   </servlet>
@@ -165,6 +183,11 @@
   </servlet-mapping>
 
   <servlet-mapping>
+    <servlet-name>DocsServlet</servlet-name>
+    <url-pattern>/docs</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
      <servlet-name>DownloadServlet</servlet-name>
      <url-pattern>/download</url-pattern>
   </servlet-mapping>
@@ -172,6 +195,16 @@
   <servlet-mapping>
     <servlet-name>NamespaceServlet</servlet-name>
     <url-pattern>/snorql/namespaces.js</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SnorqlServlet</servlet-name>
+    <url-pattern>/snorql</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SnorqlServlet</servlet-name>
+    <url-pattern>/snorql/</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>

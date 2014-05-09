@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="/static/docs">Documentation</a></li>
+            <li><a href="/docs">Documentation</a></li>
             <li><a href="/stats">Statistics</a></li>
               
             #if (!$classmap_links.isEmpty())
@@ -48,7 +48,7 @@
               </li>
             #end
                 
-            <li><a href="/snorql">Snorql</a></li>
+            <li><a href="/snorql/">Snorql</a></li>
           </ul>
         </div>
       </div>
@@ -86,14 +86,15 @@
         </p> 
 
         <h3>Accessing the data:</h3>
-        <p class="text">The database can be accessed in 4 different ways:</p>
+        <p class="text">The database can be accessed in 5 different ways:</p>
       </div>
 
 
       <!-- Access -->
-      <div id="access" class="row">
+      <div id="access">
+      <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">1. HTML View</h3>
@@ -112,7 +113,7 @@
           </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">2. RDF View</h3>
@@ -125,23 +126,41 @@
           </div>
         </div>
 
-        <div class="col-sm-3">
+      </div>
+      <div class="row">
+
+        <div class="col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">3. SPARQL Endpoint</h3>
             </div>
             <div class="panel-body">
-              <p>The SPARQL endpoint can be explored using the build in AJAX-based SPARQL Explorer <a href="snorql/">Snorql</a> or SPARQL clients can query the database at this SPARQL endpoint:</p>
+              <p>SPARQL clients can query the database at this SPARQL endpoint:</p>
 
               <p class="link link-source">${home_link}sparql</p>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">3. Data Set Dump</h3>
+              <h3 class="panel-title">4. Snorql</h3>
+            </div>
+            <div class="panel-body">
+              <p>The SPARQL endpoint can also be explored using the build in AJAX-based SPARQL Explorer:</p>
+
+              <p class="link"><a href="snorql/">Snorql</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">5. Data Set Dump</h3>
             </div>
             <div class="panel-body">
               <p>A dump of the data set can be downloaded in two different ways:</p>
@@ -151,6 +170,7 @@
           </div>
         </div>
 
+      </div>
       </div>
 
     </div>
@@ -178,5 +198,23 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.dbis-nowplaying.uibk.ac.at"]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://dbis-analytics.uibk.ac.at/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 2]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="http://dbis-analytics.uibk.ac.at/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
   </body>
 </html>

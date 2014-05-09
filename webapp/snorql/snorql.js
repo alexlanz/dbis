@@ -460,9 +460,9 @@ function SPARQLResultFormatter(json, namespaces) {
             span.appendChild(a);
         } else {
             a.appendChild(document.createTextNode(node.value));
-            span.appendChild(document.createTextNode('<'));
+            //span.appendChild(document.createTextNode('<'));
             span.appendChild(a);
-            span.appendChild(document.createTextNode('>'));
+            //span.appendChild(document.createTextNode('>'));
         }
         match = node.value.match(/^(https?|ftp|mailto|irc|gopher|news):/);
         if (match) {

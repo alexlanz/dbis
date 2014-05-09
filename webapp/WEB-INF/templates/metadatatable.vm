@@ -25,7 +25,7 @@
 	#end
 
 	#if (!$foundSth)
-		<small>&lt;</small><a class="uri" href="$node.toString()">$node.toString()</a><small>&gt;</small>
+		<a class="uri" href="$node.toString()">$node.toString()</a>
 	#end
 #end
 

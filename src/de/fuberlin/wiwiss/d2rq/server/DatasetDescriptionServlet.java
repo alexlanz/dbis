@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -184,6 +185,13 @@ public class DatasetDescriptionServlet extends HttpServlet {
 			context.put("blankNodesMap", new HashMap<Resource, String>());
 			context.put("renderedNodesMap", new HashMap<Resource, Boolean>());
 
+			// ClassMap
+			Map<String,String> classMapLinks = new TreeMap<String,String>();
+			for (String name: lister.classMapNames()) {
+				classMapLinks.put(name, server.baseURI() + "directory/" + name);
+			}
+			context.put("classmap_links", classMapLinks);
+			
 			velocity.mergeTemplateXHTML("dataset_page.vm");
 		} else {
 			// render RDF response
