@@ -78,7 +78,6 @@
           <ul>
             <li>$artists artists</li>
             <li>$tracks tracks</li>
-            <li>$users users</li>
             <li>$listening_events listening events</li>
           </ul>
 

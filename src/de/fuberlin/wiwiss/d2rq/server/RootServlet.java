@@ -44,9 +44,6 @@ public class RootServlet extends HttpServlet {
 			context.put("tracks", line);
 			line = br.readLine();
 
-			context.put("users", line);
-			line = br.readLine();
-
 			context.put("listening_events", line);
 			line = br.readLine();
 
@@ -56,7 +53,6 @@ public class RootServlet extends HttpServlet {
     		} catch(Exception e) {
 			context.put("artists", new Integer(0));
 			context.put("tracks", new Integer(0));
-			context.put("users", new Integer(0));
 			context.put("listening_events", new Integer(0));
 			context.put("updated_at", "...");
 		}
