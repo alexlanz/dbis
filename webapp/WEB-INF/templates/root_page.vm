@@ -71,7 +71,7 @@
         <p class="text">#nowplaying is a data set which leverages social media for the creation of a diverse and constantly updated data set describing the music listening behavior of users. For the creation of the data set we rely on Twitter which is frequently facilitated to post which music the respective user is currently listening to. From such tweets, we extract track and artist information and further metadata.</p>
 
         <h3>Documentation and Statistics:</h3>
-        <p class="text text-docu">More detailed informations about the structure of the data set and how to access it can be found in the <a href="/static/docs">documentation</a>.</p>
+        <p class="text text-docu">More detailed informations about the structure of the data set and how to access it can be found in the <a href="/docs">documentation</a>.</p>
 
         <p class="text">The data set contains:
 
