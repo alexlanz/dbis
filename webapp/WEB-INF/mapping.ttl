@@ -18,25 +18,26 @@
 	d2r:port 80;
 	d2r:limitPerClassMap 1000;
 	d2r:limitPerPropertyBridge false;
-	d2r:sparqlTimeout 60;
+	d2r:sparqlTimeout 1000;
   	d2r:pageTimeout 5;
 	rdfs:label "#nowplaying";
 	.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:jdbcDSN "jdbc:mysql://localhost/";
+	d2rq:jdbcDSN "jdbc:mysql://";
 	d2rq:username "";
 	d2rq:password "";
 	jdbc:autoReconnect "true";
 	jdbc:zeroDateTimeBehavior "convertToNull";
+	d2rq:resultSizeLimit 100;
 	.
 
 # Table artists
 map:artists a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "artists/@@trackAndArtist.artistHash@@";
-	d2rq:class mo:MusicArtist;
+	d2rq:class mo:MusicGroup;
 	d2rq:classDefinitionLabel "artists";
 	.
 map:artists__label a d2rq:PropertyBridge;
