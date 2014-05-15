@@ -109,9 +109,11 @@
                 <h3 class="panel-title">2. RDF View</h3>
               </div>
               <div class="panel-body">
-                <p>You can explore this database with Semantic Web browsers like <a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/">Disco</a> or <a href="http://marbles.sourceforge.net">Marbles</a>. To start browsing, open this entry point URL in your Semantic Web browser:</p>
+                <p>You can explore this database with Semantic Web browsers like the online RDF browser from the <a href="http://graphite.ecs.soton.ac.uk/browser/">University of Southampton</a>. To start browsing, open this entry point URL in your Semantic Web browser:</p>
 
                 <p class="link link-source">${home_link}all</p>
+
+                <p>The online service <a href="http://en.lodlive.it/">LodLive</a> allows you to insert resource URI's for displaying a resource with a graph. To start browsing, insert the URI of a resouce, that is displayed on a resource page.</p>
               </div>
             </div>
           </div>
@@ -154,9 +156,9 @@
                 <h3 class="panel-title">5. Data Set Dump</h3>
               </div>
               <div class="panel-body">
-                <p>A dump of the data set can be downloaded in two different ways:</p>
+                <p>A dump of the data set can be downloaded in the following format:</p>
 
-                <p class="link"><a href="/download">RDF/XML</a> - <a href="/download?format=turtle">Turtle</a></p>
+                <p class="link"><a href="/download?format=turtle">Turtle</a></p>
               </div>
             </div>
           </div>
