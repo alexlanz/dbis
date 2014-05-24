@@ -30,7 +30,7 @@ map:database a d2rq:Database;
 	d2rq:password "";
 	jdbc:autoReconnect "true";
 	jdbc:zeroDateTimeBehavior "convertToNull";
-	d2rq:resultSizeLimit 100;
+	d2rq:resultSizeLimit 1000;
 	.
 
 # Table artists
@@ -123,8 +123,26 @@ map:listening_events_track__ref a d2rq:PropertyBridge;
 	d2rq:join "listeningEvents.track => trackAndArtist.id";
 	.
 map:listening_events_user__ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:listening_events;
-	d2rq:property sioc:has_creator;
-	d2rq:propertyDefinitionLabel "listening_events user";
-	d2rq:column "listeningEvents.user";
-	.
+        d2rq:belongsToClassMap map:listening_events;
+        d2rq:property sioc:creator_of;
+        d2rq:uriPattern "users/@@listeningEvents.user@@";
+        .
+
+# Table users
+map:users a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "users/@@listeningEvents.user@@";
+        d2rq:class foaf:Person;
+        d2rq:classDefinitionLabel "users";
+        .
+map:users__label a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:users;
+        d2rq:property rdfs:label;
+        d2rq:pattern "User @@listeningEvents.user@@";
+        .
+map:users_name a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:users;
+        d2rq:property foaf:name;
+        d2rq:propertyDefinitionLabel "users name";
+        d2rq:column "listeningEvents.user";
+        .

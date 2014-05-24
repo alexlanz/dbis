@@ -68,6 +68,7 @@
           <ul>
             <li>Number of artists: $artists</li>
             <li>Number of tracks: $tracks</li>
+            <li>Number of users: $users</li>
             <li>Number of listining events: $listening_events</li>
           </ul>
 

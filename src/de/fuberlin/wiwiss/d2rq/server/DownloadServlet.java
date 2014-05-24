@@ -21,13 +21,13 @@ public class DownloadServlet extends HttpServlet {
 
 		String format = request.getParameter("format");
 
-         	String fileName = "nowplaying-dump.rdf";
+         	String fileName = "nowplaying-dump.nt.gz";
          	String fileType = "application/rdf+xml";
          	
 		if(format != null) {
 
 			if(format.toLowerCase().equals("turtle")) {
-				fileName = "nowplaying-dump.nt";
+				fileName = "nowplaying-dump.nt.gz";
 				fileType = "text/turtle";
 			}
 

@@ -46,6 +46,9 @@ public class StatsServlet extends HttpServlet {
 			context.put("listening_events", line);
 			line = br.readLine();
 
+                        context.put("users", line);
+                        line = br.readLine();
+
 			context.put("updated_at", line);
 
 			br.close();
@@ -53,6 +56,7 @@ public class StatsServlet extends HttpServlet {
 			context.put("artists", new Integer(0));
 			context.put("tracks", new Integer(0));
 			context.put("listening_events", new Integer(0));
+			context.put("users", new Integer(0));
 			context.put("updated_at", "...");
 		}	
 
