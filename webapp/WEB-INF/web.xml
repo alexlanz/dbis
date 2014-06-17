@@ -92,6 +92,15 @@
   </servlet>
 
   <servlet>
+    <servlet-name>AboutServlet</servlet-name>
+    <servlet-class>de.fuberlin.wiwiss.d2rq.server.AboutServlet</servlet-class>
+    <init-param>
+      <param-name>org.apache.velocity.properties</param-name>
+      <param-value>/WEB-INF/velocity.properties</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
     <servlet-name>SnorqlServlet</servlet-name>
     <servlet-class>de.fuberlin.wiwiss.d2rq.server.SnorqlServlet</servlet-class>
     <init-param>
@@ -185,6 +194,11 @@
   <servlet-mapping>
     <servlet-name>DocsServlet</servlet-name>
     <url-pattern>/docs</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AboutServlet</servlet-name>
+    <url-pattern>/about</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

@@ -46,6 +46,7 @@
             #end
 
             <li><a href="/snorql">Snorql</a></li>
+            <li><a href="/about">About</a></li>
           </ul>
         </div>
       </div>
@@ -66,8 +67,8 @@
         <ul>
           <li><a href="#about">About the project</a></li>
           <li><a href="#access">Accessing the data</a></li>
-          <li><a href="#example-document">Document example</a></li>
           <li><a href="#example-sparql">SPARQL query example</a></li>
+          <li><a href="#example-result">Result of the SPARQL query</a></li>
         </ul>
       </div>
 
@@ -167,61 +168,9 @@
       </div>
 
 
-      <div id="example-document" class="doku-text">
-        <h3>An example of a document</h3>
-
-        <pre>
-
-          &lt;?xml version="1.0"?&gt;
-          &lt;rdf:RDF
-              xmlns:vocab="http://dbis-nowplaying.uibk.ac.at/resource/vocab/"
-              xmlns:void="http://rdfs.org/ns/void#"
-              xmlns:sioc="http://rdfs.org/sioc/ns#"
-              xmlns:xhtml="http://www.w3.org/1999/xhtml/vocab/#"
-              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-              xmlns:db="http://dbis-nowplaying.uibk.ac.at/resource/"
-              xmlns:prvTypes="http://purl.org/net/provenance/types#"
-              xmlns:d2r="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#"
-              xmlns:foaf="http://xmlns.com/foaf/0.1/"
-              xmlns:sp="http://spinrdf.org/sp#"
-              xmlns:doap="http://usefulinc.com/ns/doap#"
-              xmlns:owl="http://www.w3.org/2002/07/owl#"
-              xmlns:dcterms="http://purl.org/dc/terms/"
-              xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-              xmlns:map="http://dbis-nowplaying.uibk.ac.at/resource/#"
-              xmlns:prv="http://purl.org/net/provenance/ns#"
-              xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-              xmlns:d2rq="http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#"
-              xmlns:mo="http://purl.org/ontology/mo/"&gt;
-            &lt;rdf:Description rdf:about="http://dbis-nowplaying.uibk.ac.at/resource/tracks/ta03"&gt;
-              &lt;foaf:maker&gt;
-                &lt;mo:MusicArtist rdf:about="http://dbis-nowplaying.uibk.ac.at/resource/artists/ar02"&gt;
-                  &lt;foaf:page rdf:resource="http://dbis-nowplaying.uibk.ac.at/page/artists/ar02"/&gt;
-                  &lt;rdfs:isDefinedBy&gt;
-                    &lt;foaf:Document rdf:about="http://dbis-nowplaying.uibk.ac.at/data/artists/ar02"&gt;
-                      &lt;prv:containedBy rdf:resource="http://dbis-nowplaying.uibk.ac.at/dataset"/&gt;
-                      &lt;void:inDataset rdf:resource="http://dbis-nowplaying.uibk.ac.at/dataset"/&gt;
-                      &lt;dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
-                      &gt;2014-05-09T12:35:12.6Z&lt;/dcterms:date&gt;
-                      &lt;rdf:type rdf:resource="http://purl.org/net/provenance/ns#DataItem"/&gt;
-                      &lt;rdfs:label&gt;RDF Description of Alex Clare&lt;/rdfs:label&gt;
-                      &lt;foaf:primaryTopic rdf:resource="http://dbis-nowplaying.uibk.ac.at/resource/artists/ar02"/&gt;
-                    &lt;/foaf:Document&gt;
-                  &lt;/rdfs:isDefinedBy&gt;
-                  &lt;mo:musicbrainz rdf:resource="http://musicbrainz.org/artist/482-rgb"/&gt;
-                  &lt;rdfs:label&gt;Alex Clare&lt;/rdfs:label&gt;
-                  &lt;foaf:name&gt;Alex Clare&lt;/foaf:name&gt;
-                &lt;/mo:MusicArtist&gt;
-              &lt;/foaf:maker&gt;
-            &lt;/rdf:Description&gt;
-          &lt;/rdf:RDF&gt;
-
-        </pre>
-      </div>
-
-
       <div id="example-sparql" class="doku-text">
         <h3>An example of a SPARQL query</h3>
+	The following SPARQL query returns 10 users that listened to the track Beat It of Michael Jackson. In addition the source and the time when they were listening the track is returned.<br /><br />
 
         <pre>
 
@@ -239,18 +188,147 @@
           PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
           PREFIX vocab: &lt;http://dbis-nowplaying.uibk.ac.at/resource/vocab/&gt;
 
-          SELECT DISTINCT * WHERE {
+          SELECT ?user ?createdAt ?source WHERE {
+            ?listeningEvent sioc:creator_of ?user .
             ?listeningEvent dcterms:created ?createdAt .
-            ?listeningEvent sioc:has_creator ?user .
             ?listeningEvent dc:publisher ?source .
             ?listeningEvent mo:track ?track .
-            ?track dc:title "Too Close" .
+            ?track dc:title "Beat It" .
             ?track mo:musicbrainz ?mbTrackID .
             ?track foaf:maker ?artist .
-            ?artist foaf:name "Alex Clare" .
+            ?artist foaf:name "Michael Jackson" .
             ?artist mo:musicbrainz ?mbArtistID .
-          }
-          LIMIT 10
+          } LIMIT 10
+        </pre>
+      </div>
+
+
+      <div id="example-result" class="doku-text">
+        <h3>Result of the SPARQL query</h3>
+
+        <pre>
+
+          &lt;?xml version="1.0"?&gt;
+          &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
+            &lt;head&gt;
+              &lt;variable name="user"/&gt;
+              &lt;variable name="createdAt"/&gt;
+              &lt;variable name="source"/&gt;
+            &lt;/head&gt;
+            &lt;results&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/f68c6a51c1a850db9edf9e1a53da05fdd74ea1eb&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T01:09:27&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;Tweet Button&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/887ddd5ff19d6080bc3215b8a072da0de0438704&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T03:24:18&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;web&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/f79ea6f7f530e6e673bb68e3ad3341d98fceb7ae&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T05:42:35&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;web&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/bf5cfe98e8c828876259f199c730791b0b17f288&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T06:36:39&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;nuopveronica&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/1467c288c95275a2cc6d488e0710590b51b2a4d2&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T09:20:59&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;Twittelator&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/e0fca71c80144e21979f4551871b5a674a5afad7&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T12:16:09&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;Twitter for Android&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/8c674fb08fcdcb8029d3506628f1d13046ae0e73&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T13:01:42&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;Caro (Omroep Voorne)&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/96b828adf6079cac757e2bbfc59fdd81d62e6996&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T14:43:49&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;SG Radio Now Playing Tweet&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/45ca71a39ff267fd822f8b2a4da0c8a42bfbdac7&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T18:25:21&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;Twitter for BlackBerryÂ®&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+              &lt;result&gt;
+                &lt;binding name="user"&gt;
+                  &lt;uri&gt;http://dbis-nowplaying.uibk.ac.at/resource/users/8742174f2318ffd05d19123bf72ea3f710049524&lt;/uri&gt;
+                &lt;/binding&gt;
+                &lt;binding name="createdAt"&gt;
+                  &lt;literal datatype="http://www.w3.org/2001/XMLSchema#dateTime"&gt;2013-01-01T20:52:17&lt;/literal&gt;
+                &lt;/binding&gt;
+                &lt;binding name="source"&gt;
+                  &lt;literal&gt;TweetMag1c MusicEdition&lt;/literal&gt;
+                &lt;/binding&gt;
+              &lt;/result&gt;
+            &lt;/results&gt;
+          &lt;/sparql&gt;
+
         </pre>
       </div>
 

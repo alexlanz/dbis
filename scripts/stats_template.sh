@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit the script with an error code if one command fails
+set -e
+
 echo 'Start updating the stats..'
 
 HOST=""
