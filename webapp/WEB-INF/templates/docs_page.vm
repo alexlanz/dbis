@@ -157,9 +157,11 @@
                 <h3 class="panel-title">5. Data Set Dump</h3>
               </div>
               <div class="panel-body">
-                <p>A dump of the data set can be downloaded in the following format:</p>
+                <p>A dump of the data set can be downloaded in the following format. The downloads are also compressed.</p>
 
                 <p class="link"><a href="/download?format=turtle">Turtle</a></p>
+
+		<p>Latest update of the dump: $dumpUpdateTime</p>
               </div>
             </div>
           </div>

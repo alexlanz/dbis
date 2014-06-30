@@ -10,4 +10,7 @@ gzip -f -5 /mnt/eva_nas/dump_90/nowplaying-dump.nt
 
 mv /mnt/eva_nas/dump_90/nowplaying-dump.nt.gz /mnt/eva_nas/dump_90/public/nowplaying-dump.nt.gz
 
+echo "$(date)" >> /home/jetty/dumps_backup.txt
+mv /home/jetty/dumps_backup.txt /home/jetty/dumps.txt
+
 echo 'Finished updating the dumps..'

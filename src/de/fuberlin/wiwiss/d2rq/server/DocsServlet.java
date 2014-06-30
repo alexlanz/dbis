@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +30,21 @@ public class DocsServlet extends HttpServlet {
 		VelocityWrapper velocity = new VelocityWrapper(this, request, response);
 		Context context = velocity.getContext();
 		context.put("classmap_links", classMapLinks);
+		
+
+                // Loading dump update time
+                try {
+                        BufferedReader br = new BufferedReader(new FileReader("dumps.txt"));
+
+                        String line = br.readLine();
+
+                        context.put("dumpUpdateTime", line);
+
+                        br.close();
+                } catch(Exception e) {
+                        context.put("dumpUpdateTime", "-");
+                }
+
 		velocity.mergeTemplateXHTML("docs_page.vm");
 	}
 

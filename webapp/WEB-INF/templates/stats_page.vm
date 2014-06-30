@@ -66,11 +66,21 @@
 
         <div class="col-sm-offset-3 col-sm-6">
 
+	  <strong>Data Set:</strong>
           <ul>
             <li>Number of artists: $artists</li>
             <li>Number of tracks: $tracks</li>
             <li>Number of users: $users</li>
             <li>Number of listining events: $listening_events</li>
+          </ul>
+
+
+	  <br />
+	  <strong>Last Tweet:</strong>
+          <ul>
+            <li><a href="http://dbis-nowplaying.uibk.ac.at/resource/listening_events/$tweetID">http://dbis-nowplaying.uibk.ac.at/resource/listening_events/$tweetID</a></li>
+            <li>Creation of last Tweet: $tweetTime</li>
+            <li>Source of last Tweet: $tweetSource</li>
           </ul>
 
           <br />The latest update of the statistics was made on $updated_at.

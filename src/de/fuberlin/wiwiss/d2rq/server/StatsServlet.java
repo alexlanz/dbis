@@ -49,6 +49,22 @@ public class StatsServlet extends HttpServlet {
                         context.put("users", line);
                         line = br.readLine();
 
+
+
+                        context.put("tweetID", line);
+                        line = br.readLine();
+
+                        context.put("tweetUser", line);
+                        line = br.readLine();
+
+                        context.put("tweetSource", line);
+                        line = br.readLine();
+
+                        context.put("tweetTime", line);
+                        line = br.readLine();
+
+
+
 			context.put("updated_at", line);
 
 			br.close();
@@ -57,6 +73,10 @@ public class StatsServlet extends HttpServlet {
 			context.put("tracks", new Integer(0));
 			context.put("listening_events", new Integer(0));
 			context.put("users", new Integer(0));
+                        context.put("tweetID", new Integer(0));
+                        context.put("tweetUser", new Integer(0));
+                        context.put("tweetSource", new Integer(0));
+                        context.put("tweetTime", new Integer(0));
 			context.put("updated_at", "...");
 		}	
 

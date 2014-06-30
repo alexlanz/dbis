@@ -15,8 +15,14 @@ mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select replace(format(count(*), 0
 mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select replace(format(count(*), 0), ",", ".") from listeningEvents;' $DATABASE >> /home/jetty/stats_backup.txt
 mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select replace(format(count(distinct(user)), 0), ",", ".") from listeningEvents;' $DATABASE >> /home/jetty/stats_backup.txt
 
-echo "$(date)" >> /home/jetty/stats_backup.txt 
 
+mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select tweetID from listeningEvents order by created_at desc limit 1;' $DATABASE >> /home/jetty/stats_backup.txt
+mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select user from listeningEvents order by created_at desc limit 1;' $DATABASE >> /home/jetty/stats_backup.txt
+mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select source from listeningEvents order by created_at desc limit 1;' $DATABASE >> /home/jetty/stats_backup.txt
+mysql -h $HOST -u $USERNAME -p$PASSWORD -N -e 'select created_at from listeningEvents order by created_at desc limit 1;' $DATABASE >> /home/jetty/stats_backup.txt
+
+
+echo "$(date)" >> /home/jetty/stats_backup.txt 
 mv /home/jetty/stats_backup.txt /home/jetty/stats.txt
 
 echo 'Finished updating the stats..'
